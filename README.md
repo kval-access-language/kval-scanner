@@ -1,6 +1,6 @@
 # KVAL-Scanner
 
-Lexical scanner to feed into kvalparser. 
+Lexical scanner for KVAL (Key Value Access Language) for KVAL-Parser 
 
 ###Key Value Access Language
 
