@@ -3,25 +3,25 @@ package kvalscanner
 //Customised from: https://github.com/benbjohnson/sql-parser/
 
 import (
-	"io"
-	"log"
 	"bufio"
 	"bytes"
-	"strings"
+	"io"
+	"log"
 	"strconv"
+	"strings"
 )
 
-var min_unicoderune rune
-var max_unicoderune rune
+var minUnicoderune rune
+var maxUnicoderune rune
 
 func init() {
 	var err error
 	//UNICODE: http://unicode-table.com/en/
-	min_unicoderune, _, _, err = strconv.UnquoteChar("\u00A1", 0)	//inverted exclamation mark
+	minUnicoderune, _, _, err = strconv.UnquoteChar("\u00A1", 0) //inverted exclamation mark
 	if err != nil {
 		log.Fatal("Cannot initialize scanner with min unicode value.")
 	}
-	max_unicoderune, _, _, err = strconv.UnquoteChar("\uFF1F00", 0) //extended symbols: squid
+	maxUnicoderune, _, _, err = strconv.UnquoteChar("\uFF1F00", 0) //extended symbols: squid
 	if err != nil {
 		log.Fatal("Cannot initialize scanner with max unicode value.")
 	}
@@ -48,13 +48,13 @@ func (s *Scanner) Scan() (tok Token, lit string) {
 	if isWhitespace(ch) {
 		s.unread()
 		return s.scanWhitespace()
-   } else if isOperator(ch) {
-      s.unread()
-      return s.scanOperator()
+	} else if isOperator(ch) {
+		s.unread()
+		return s.scanOperator()
 	} else if isLetter(ch) {
 		s.unread()
 		return s.scanLiteral()
-   } 
+	}
 
 	// Otherwise read the individual character.
 	switch ch {
@@ -62,11 +62,11 @@ func (s *Scanner) Scan() (tok Token, lit string) {
 		return EOF, ""
 	case '_':
 		return USCORE, string(ch)
-   case '{':
-      return OPATT, string(ch)
-   case '}':
-      return CPATT, string(ch)
-   }
+	case '{':
+		return OPATT, string(ch)
+	case '}':
+		return CPATT, string(ch)
+	}
 	return ILLEGAL, string(ch)
 }
 
@@ -115,13 +115,13 @@ func (s *Scanner) scanOperator() (tok Token, lit string) {
 		return BUCKEY, buf.String()
 	case ">>":
 		return BUCBUC, buf.String()
-   case "=>":
-      return ASSIGN, buf.String()
-   case "::":
-      return KEYVAL, buf.String()
+	case "=>":
+		return ASSIGN, buf.String()
+	case "::":
+		return KEYVAL, buf.String()
 	}
 
-   return LITERAL, buf.String()
+	return LITERAL, buf.String()
 }
 
 // scanLiteral consumes the current rune and all contiguous literal runes.
@@ -149,12 +149,12 @@ func (s *Scanner) scanLiteral() (tok Token, lit string) {
 		return INS, buf.String()
 	case "GET":
 		return GET, buf.String()
-   case "LIS":
-      return LIS, buf.String()
-   case "DEL":
-      return DEL, buf.String()
-   case "REN":
-      return REN, buf.String()
+	case "LIS":
+		return LIS, buf.String()
+	case "DEL":
+		return DEL, buf.String()
+	case "REN":
+		return REN, buf.String()
 	}
 
 	// Otherwise return as a regular identifier.
@@ -181,33 +181,33 @@ func isWhitespace(ch rune) bool { return ch == ' ' || ch == '\t' || ch == '\n' }
 //TODO: Need to expand this for a greater range of values... maybe NOT(the other classes?)
 //func isLetter(ch rune) bool { return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || ch == '-' }
 
-var ascii_letter_symbols = []rune{';','=','?','[','\\',']','^','`','|','~','@'}
+var asciiLetterSymbols = []rune{';', '=', '?', '[', '\\', ']', '^', '`', '|', '~', '@'}
 
-func isLetter(ch rune) bool { 
+func isLetter(ch rune) bool {
 
-	if (ch >= 'a' && ch <= 'z'){
-		return true 
+	if ch >= 'a' && ch <= 'z' {
+		return true
 	}
-	if (ch >= 'A' && ch <= 'Z') {
+	if ch >= 'A' && ch <= 'Z' {
 		return true
 	}
 	if ch >= '!' && ch <= '/' {
 		return true
 	}
-	for _, v := range(ascii_letter_symbols) {
+	for _, v := range asciiLetterSymbols {
 		if ch == v {
 			return true
 		}
 	}
 	//some rudimentary unicode handling... (need to improve)
 	//init code sets min and max unicode values
-	if ch >= min_unicoderune && ch <= max_unicoderune {
+	if ch >= minUnicoderune && ch <= maxUnicoderune {
 		return true
 	}
 	return false
 }
 
-func isOperator(ch rune) bool { return (ch == '>') || (ch == ':') || (ch == '=') } 
+func isOperator(ch rune) bool { return (ch == '>') || (ch == ':') || (ch == '=') }
 
 // isDigit returns true if the rune is a digit.
 func isDigit(ch rune) bool { return (ch >= '0' && ch <= '9') }
