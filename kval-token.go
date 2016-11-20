@@ -3,39 +3,39 @@ package kvalscanner
 // Token represents a lexical token.
 type Token int
 
+//Tokens to scan for that satisfy the KVAL (Key Value Access Language) specification
 const (
 	// Special tokens
-	ILLEGAL Token = iota    // used in declarations of incrementing numbers
-	EOF                     // EOF
-	WS                      // Whitespace
+	ILLEGAL Token = iota    // ILLEGAL: Token is an illegal character
+	EOF                     // EOF: Token signals the end of input
+	WS                      // WS: Token signals whitespace has been found
 
 	// Literals
-	LITERAL                   // main
+	LITERAL                   // LITERAL: String literal discovered
 
    // Other Operators (in order)
-   BUCKEY                  // >>>> Bucket to Key Hierarchy
-   BUCBUC                  // >> Bucket Hierarchy
-   KEYVAL                  // :: Key//Value pair
-   ASSIGN                  // => Assignment for rename operations
+   BUCKEY                  // BUCKKEY: >>>> Bucket to Key syntax for KVAL
+   BUCBUC                  // BUCBUC: >> Bucket to Bucket syntax for KVAL
+   KEYVAL                  // KEYVALL :: Key to Value syntax for KVAL
+   ASSIGN                  // ASSIGN: => Assignment operator for KVAL renames
 
    // Single character operators
-   USCORE                  // _ Return key OR value, for unknown key OR value 
-   OPATT                   // { Open a regex pattern
-   CPATT                   // | Close a regex pattern
+   USCORE                  // USCORE: _ Return unknown Key or Value 
+   OPATT                   // OPATT: { Open a regular expression pattern
+   CPATT                   // COATT: } Close a regular expression pattern
 
 	// Keywords
-   INS                     // Insert
-   GET                     // Get values
-   LIS                     // Check existence
-   DEL                     // Delete values
-   REN                     // Rename values
+   INS                     // INS: Insert capability of KVAL
+   GET                     // GET: Get capability of KVAL
+   LIS                     // LIS: LIS capability of KVAL
+   DEL                     // DEL: Delete capability of KVAL
+   REN                     // REN: Rename capability of KVAL
 
    // Regex
-   REGEX                   // {PATT} ANy regex pattern inside these two values
+   REGEX                   // REGEX: {PATT} ANy regex pattern inside OPATT and CPATT
 )
 
-//map to help validate
-//may be unecessary redundancy...
+//Mapped values aiding in validation of KVAL strings
 var KeywordMap = map[string]int{
    "INS":   0x1,         // Insert
    "ins":   0x1,
