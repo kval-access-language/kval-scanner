@@ -1,5 +1,8 @@
 # KVAL-Scanner
 
+[![GoDoc](https://godoc.org/github.com/kval-access-language/kval-scanner?status.svg)](https://godoc.org/github.com/kval-access-language/kval-scanner)
+[![Go Report Card](https://goreportcard.com/badge/github.com/kval-access-language/kval-scanner)](https://goreportcard.com/report/github.com/kval-access-language/kval-scanner)
+
 Lexical scanner for KVAL (Key Value Access Language) for KVAL-Parser 
 
 ###Key Value Access Language
