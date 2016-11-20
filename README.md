@@ -1,5 +1,6 @@
 # KVAL-Scanner
 
+[![Build Status](https://travis-ci.org/kval-access-language/kval-scanner.svg?branch=master)](https://travis-ci.org/kval-access-language/kval-scanner)
 [![GoDoc](https://godoc.org/github.com/kval-access-language/kval-scanner?status.svg)](https://godoc.org/github.com/kval-access-language/kval-scanner)
 [![Go Report Card](https://goreportcard.com/badge/github.com/kval-access-language/kval-scanner)](https://goreportcard.com/report/github.com/kval-access-language/kval-scanner)
 
