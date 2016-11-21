@@ -30,9 +30,9 @@ const (
 )
 
 // Mapped values exported for KVAL Parser to verify keywords
-// Lookup 'LIT' value in KeyWordMap and if found we have a KVAL key word, 
+// Lookup 'LIT' value in KeyWordMap and if found we have a KVAL key word,
 // e.g. INS, GET, LIS, REN, DEL. If used correctly this map will help a parser
-// take care of and case-sensitivity issues when users specify query strings. 
+// take care of and case-sensitivity issues when users specify query strings.
 var KeywordMap = map[string]int{
 	"INS": 0x1, // INS: Insert keyword uppercase
 	"ins": 0x1, // ins: Insert keyword lowercase
