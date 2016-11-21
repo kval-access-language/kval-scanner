@@ -1,5 +1,4 @@
-/*
-	Package kvalscanner implements a basic lexical scanner for KVAL (Key Value
+/*Package kvalscanner implements a basic lexical scanner for KVAL (Key Value
 	Access Language). The language has been created for more fluid access to 
 	Key-Value-like databases such as the popular BoltDb. 
 
