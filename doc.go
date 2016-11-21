@@ -6,5 +6,8 @@
 	Parsers can access a new Scanner() to check that a user provided string is
 	valid according to the language's specification. For Golang, however, this 
 	work is already done for you at http://github.com/kval-access-language/kval-parse
+
+	The most up-to-date specification for KVAL can be found here:
+	https://github.com/kval-access-language/kval
 */
 package kvalscanner
