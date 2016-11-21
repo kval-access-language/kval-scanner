@@ -29,20 +29,21 @@ const (
 	REGEX // Regular expression, REGEX: {PATT} ANy regex pattern inside OPATT and CPATT
 )
 
-// Mapped values aiding in validation of KVAL strings
+// Mapped values exported for KVAL Parser to verify keywords
+// Lookup 'LIT' value in KeyWordMap and if found we have a KVAL key word, e.g. INS
 var KeywordMap = map[string]int{
-	"INS": 0x1, // Insert
-	"ins": 0x1,
+	"INS": 0x1, // INS: Insert keyword uppercase
+	"ins": 0x1, // ins: Insert keyword lowercase
 
-	"GET": 0x2, // Get values
-	"get": 0x2,
+	"GET": 0x2, // GET: Get keyword uppercase
+	"get": 0x2, // get: Get keyword lowercase
 
-	"LIS": 0x3, // Check existence
-	"lis": 0x3,
+	"LIS": 0x3, // LIS: List keyword uppercase
+	"lis": 0x3, // lis: List keyword lowercase
 
-	"DEL": 0x4, // Delete values
-	"del": 0x4,
+	"DEL": 0x4, // DEL: Delete keyword uppercase
+	"del": 0x4, // del: Delete keyword lowercase
 
-	"REN": 0x5, // Rename values
-	"ren": 0x5,
+	"REN": 0x5, // REN: Rename keyword uppercase
+	"ren": 0x5, // ren: Rename keyword lowercase
 }
