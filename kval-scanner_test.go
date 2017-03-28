@@ -38,7 +38,7 @@ func TestScan(t *testing.T) {
 
 // Test a range of literals that should be allowed by the library
 func TestValidLiterals(t *testing.T) {
-	var lits = []string{"āēīōūĀĒĪŌŪ", ">>>", "/)(*&^%$#@!>:!@#", "abc123", "子：？"}
+	var lits = []string{"āēīōūĀĒĪŌŪ", ">>>", "/)(*&^%$#@!>:!@#", "abc123", "子：？", "200"}
 	for _, s := range lits {
 		s := NewScanner(strings.NewReader(s))
 		var tok Token

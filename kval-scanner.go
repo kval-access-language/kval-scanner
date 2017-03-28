@@ -55,6 +55,9 @@ func (s *Scanner) Scan() (tok Token, lit string) {
 	} else if isLetter(ch) {
 		s.unread()
 		return s.scanLiteral()
+	} else if isDigit(ch) {
+		s.unread()
+		return s.scanLiteral()
 	}
 
 	// Otherwise read the individual character.

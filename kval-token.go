@@ -29,6 +29,31 @@ const (
 	REGEX // Regular expression, REGEX: {PATT} ANy regex pattern inside OPATT and CPATT
 )
 
+var ErrorLookup = map[Token]string{
+	ILLEGAL: "ILLEGAL",
+	EOF:     "EOF",        // Spacial token, EOF: Token signals the end of input
+	WS:      "WHITESPACE", // Spacial token, WS: Token signals whitespace has been found
+
+	LITERAL: "LITERAL", // LITERAL: String literal discovered
+
+	BUCKEY: "BUCKET >>>> KEY",  // Other operator, BUCKKEY: >>>> Bucket to Key syntax for KVAL
+	BUCBUC: "BUCKET >> BUCKET", // Other operator, BUCBUC: >> Bucket to Bucket syntax for KVAL
+	KEYVAL: "KEY :: VALUE",     // Other operator, KEYVALL :: Key to Value syntax for KVAL
+	ASSIGN: "ASSIGNMENT",       // Other operator, ASSIGN: => Assignment operator for KVAL renames
+
+	USCORE: "UNDERSCORE",          // Single character operator, USCORE: _ Return unknown Key or Value
+	OPATT:  "OPEN REGEX PATTERN",  // Single character operator, OPATT: { Open a regular expression pattern
+	CPATT:  "CLOSE REGEX PATTERN", // Single character operator, COATT: } Close a regular expression pattern
+
+	INS: "INSERT KEYWORD", // Keyword, INS: Insert capability of KVAL
+	GET: "GET KEYWORD",    // Keyword, GET: Get capability of KVAL
+	LIS: "LIS KEYWORD",    // Keyword, LIS: LIS capability of KVAL
+	DEL: "DEL KEYWORD",    // Keyword, DEL: Delete capability of KVAL
+	REN: "REN KEYWORD",    // Keyword, REN: Rename capability of KVAL
+
+	REGEX: "REGEX PATTERN", // Regular expression, REGEX: {PATT} ANy regex pattern inside OPATT and CPATT
+}
+
 // Mapped values exported for KVAL Parser to verify keywords
 // Lookup 'LIT' value in KeyWordMap and if found we have a KVAL key word,
 // e.g. INS, GET, LIS, REN, DEL. If used correctly this map will help a parser
