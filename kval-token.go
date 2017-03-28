@@ -29,6 +29,7 @@ const (
 	REGEX // Regular expression, REGEX: {PATT} ANy regex pattern inside OPATT and CPATT
 )
 
+// map to enable error lookup
 var ErrorLookup = map[Token]string{
 	ILLEGAL: "ILLEGAL",
 	EOF:     "EOF",        // Spacial token, EOF: Token signals the end of input
