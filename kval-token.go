@@ -29,7 +29,7 @@ const (
 	REGEX // Regular expression, REGEX: {PATT} ANy regex pattern inside OPATT and CPATT
 )
 
-// map to enable error lookup
+// ErrorLookup map is used to look up an error and provide a human readable response
 var ErrorLookup = map[Token]string{
 	ILLEGAL: "ILLEGAL",
 	EOF:     "EOF",        // Spacial token, EOF: Token signals the end of input
@@ -55,7 +55,7 @@ var ErrorLookup = map[Token]string{
 	REGEX: "REGEX PATTERN", // Regular expression, REGEX: {PATT} ANy regex pattern inside OPATT and CPATT
 }
 
-// Mapped values exported for KVAL Parser to verify keywords
+// KeywordMap values exported for KVAL Parser to verify keywords
 // Lookup 'LIT' value in KeyWordMap and if found we have a KVAL key word,
 // e.g. INS, GET, LIS, REN, DEL. If used correctly this map will help a parser
 // take care of and case-sensitivity issues when users specify query strings.

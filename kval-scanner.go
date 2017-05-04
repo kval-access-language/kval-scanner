@@ -179,7 +179,7 @@ func (s *Scanner) read() rune {
 func (s *Scanner) unread() { _ = s.r.UnreadRune() }
 
 // isWhitespace returns true if the rune is a space, tab, or newline.
-func isWhitespace(ch rune) bool { return ch == ' ' || ch == '\t' || ch == '\n' }
+func isWhitespace(ch rune) bool { return ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r' }
 
 // isLetter returns true if the rune is a letter.
 //TODO: Need to expand this for a greater range of values... maybe NOT(the other classes?)
